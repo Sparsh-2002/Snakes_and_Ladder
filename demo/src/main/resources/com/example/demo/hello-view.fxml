@@ -6,23 +6,33 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.HelloController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="757.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.HelloController">
    <children>
       <ImageView fx:id="img" fitHeight="600.0" fitWidth="600.0" onMouseClicked="#findloc" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Ludo_Master.jpeg" />
          </image>
       </ImageView>
-      <ImageView fx:id="goti1" fitHeight="55.0" fitWidth="25.0" layoutX="11.0" layoutY="545.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="goti1" fitHeight="55.0" fitWidth="25.0" layoutX="11.0" layoutY="545.0" pickOnBounds="true" preserveRatio="true" y="60.0">
          <image>
             <Image url="@Screenshot 2021-12-14 at 9.37.21 PM.png" />
          </image>
       </ImageView>
-      <Button layoutX="485.0" layoutY="83.0" mnemonicParsing="false" onAction="#move" text="ROLL" />
-      <Label fx:id="diceVal" layoutX="493.0" layoutY="166.0" text="Label" />
-      <ImageView fx:id="goti2" fitHeight="55.0" fitWidth="25.0" layoutX="11.0" layoutY="545.0" pickOnBounds="true" preserveRatio="true">
+      <Button layoutX="487.0" layoutY="220.0" mnemonicParsing="false" onAction="#move" text="ROLL" />
+      <Label fx:id="diceVal" layoutX="499.0" layoutY="265.0" text="Label" />
+      <ImageView fx:id="goti2" fitHeight="55.0" fitWidth="25.0" layoutX="11.0" layoutY="545.0" pickOnBounds="true" preserveRatio="true" y="60.0">
          <image>
             <Image url="@Screenshot 2021-12-14 at 9.37.21 PM.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="Dice" fitHeight="37.0" fitWidth="34.0" layoutX="498.0" layoutY="164.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@1.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="arrow" fitHeight="48.0" fitWidth="42.0" layoutX="495.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@down_arrow.png" />
          </image>
       </ImageView>
    </children>
