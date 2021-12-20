@@ -7,8 +7,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="757.0" prefWidth="703.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.HelloController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="757.0" prefWidth="703.0" style="-fx-background-image: &quot;src/main/resources/com/example/demo/Untitled_Artwork.pngsrc/main/resources/com/example/demo/Untitled_Artwork.png&quot;;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.HelloController">
    <children>
+      <ImageView fitHeight="796.0" fitWidth="803.0" layoutX="-11.0" layoutY="-39.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@background.jpeg" />
+         </image>
+      </ImageView>
       <ImageView fx:id="img" fitHeight="600.0" fitWidth="600.0" onMouseClicked="#findloc" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Ludo_Master.jpeg" />
@@ -22,12 +27,12 @@
       <Rectangle fx:id="red1" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="58.0" layoutX="439.0" layoutY="286.0" opacity="0.67" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="3.0" width="77.0" />
       <ImageView fx:id="goti1" fitHeight="55.0" fitWidth="25.0" layoutX="11.0" layoutY="545.0" pickOnBounds="true" preserveRatio="true" y="60.0">
          <image>
-            <Image url="@Screenshot 2021-12-14 at 9.37.21 PM.png" />
+            <Image url="@Screenshot%202021-12-14%20at%209.37.21%20PM.png" />
          </image>
       </ImageView>
       <Button layoutX="518.0" layoutY="219.0" mnemonicParsing="false" onAction="#move" text="ROLL" />
       <Label fx:id="diceVal" layoutX="526.0" layoutY="265.0" text="Label" />
-      <ImageView fx:id="goti2" fitHeight="52.0" fitWidth="24.0" layoutX="12.0" layoutY="546.0" pickOnBounds="true" preserveRatio="true" y="60.0">
+      <ImageView fx:id="goti2" fitHeight="52.0" fitWidth="24.0" layoutX="11.0" layoutY="546.0" pickOnBounds="true" preserveRatio="true" y="60.0">
          <image>
             <Image url="@Screenshot%202021-12-15%20at%207.21.49%20PM.png" />
          </image>
@@ -37,9 +42,9 @@
             <Image url="@1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="arrow" fitHeight="48.0" fitWidth="42.0" layoutX="523.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="arrow" fitHeight="64.0" fitWidth="50.0" layoutX="526.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@down_arrow.png" />
+            <Image url="@arrow-pointed-down-animated.gif" />
          </image>
       </ImageView>
       <Label fx:id="Player2" layoutX="569.0" layoutY="307.0" text="Player 2" textFill="WHITE" />

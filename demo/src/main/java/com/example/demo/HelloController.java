@@ -1,7 +1,6 @@
 package com.example.demo;
 
-import javafx.animation.SequentialTransition;
-import javafx.animation.TranslateTransition;
+import javafx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -108,123 +107,39 @@ public class HelloController implements Initializable {
         if(p2.getTurn()){
             p1.black.setOpacity(1);
         }
-        if(times==1){
-            File f = new File("/Users/sandeepsehgal/IdeaProjects/demo/src/main/resources/com/example/demo/1.png");
-            Dice.setImage(new Image(f.toURI().toString()));
-        }
-        if(times==2){
-            File f = new File("/Users/sandeepsehgal/IdeaProjects/demo/src/main/resources/com/example/demo/2.png");
-            Dice.setImage(new Image(f.toURI().toString()));
-        }
-        if(times==3){
-            File f = new File("/Users/sandeepsehgal/IdeaProjects/demo/src/main/resources/com/example/demo/3.png");
-            Dice.setImage(new Image(f.toURI().toString()));
-        }
-        if(times==4){
-            File f = new File("/Users/sandeepsehgal/IdeaProjects/demo/src/main/resources/com/example/demo/4.png");
-            Dice.setImage(new Image(f.toURI().toString()));
-        }
-        if(times==5){
-            File f = new File("/Users/sandeepsehgal/IdeaProjects/demo/src/main/resources/com/example/demo/5.png");
-            Dice.setImage(new Image(f.toURI().toString()));
-        }
-        if(times==6){
-            File f = new File("/Users/sandeepsehgal/IdeaProjects/demo/src/main/resources/com/example/demo/6.png");
-            Dice.setImage(new Image(f.toURI().toString()));
-        }
+//        if(times==1){
+//            File f = new File("/Users/sandeepsehgal/IdeaProjects/demo/src/main/resources/com/example/demo/1.png");
+//            Dice.setImage(new Image(f.toURI().toString()));
+//        }
+//        if(times==2){
+//            File f = new File("/Users/sandeepsehgal/IdeaProjects/demo/src/main/resources/com/example/demo/2.png");
+//            Dice.setImage(new Image(f.toURI().toString()));
+//        }
+//        if(times==3){
+//            File f = new File("/Users/sandeepsehgal/IdeaProjects/demo/src/main/resources/com/example/demo/3.png");
+//            Dice.setImage(new Image(f.toURI().toString()));
+//        }
+//        if(times==4){
+//            File f = new File("/Users/sandeepsehgal/IdeaProjects/demo/src/main/resources/com/example/demo/4.png");
+//            Dice.setImage(new Image(f.toURI().toString()));
+//        }
+//        if(times==5){
+//            File f = new File("/Users/sandeepsehgal/IdeaProjects/demo/src/main/resources/com/example/demo/5.png");
+//            Dice.setImage(new Image(f.toURI().toString()));
+//        }
+//        if(times==6){
+//            File f = new File("/Users/sandeepsehgal/IdeaProjects/demo/src/main/resources/com/example/demo/6.png");
+//            Dice.setImage(new Image(f.toURI().toString()));
+//        }
 //        System.out.println("for dice value: "+times+" "+ p1.getHasStarted()+" "+p2.getHasStarted());
-        if(!p1.getHasStarted() && times==1 && p1.getTurn()){
-            p1.setHasStarted();
-            roll(p1,times);
-            p1.setTurn();
-            p2.setTurn();
-            if(p1.getTurn()){
-                p1.black.setOpacity(0);
-                p1.red.setOpacity(0.67);
-                p1.P.setTextFill(Paint.valueOf("white"));
-            }
-            else{
-                p1.black.setOpacity(1);
-                p1.red.setOpacity(0);
-                p1.P.setTextFill(Paint.valueOf("black"));
-            }
-            if(p2.getTurn()){
-                p2.black.setOpacity(0);
-                p2.red.setOpacity(0.67);
-                p2.P.setTextFill(Paint.valueOf("white"));
-            }
-            else{
-                p2.black.setOpacity(1);
-                p2.red.setOpacity(0);
-                p2.P.setTextFill(Paint.valueOf("black"));
-            }
-            return;
-        }
-//        System.out.println("reached checkpoint 1");
-        if(!p2.getHasStarted() && times==1 && p2.getTurn()){
-            p2.setHasStarted();
-            roll(p2,times);
-            p2.setTurn();
-            p1.setTurn();
-            if(p1.getTurn()){
-                p1.black.setOpacity(0);
-                p1.red.setOpacity(0.67);
-                p1.P.setTextFill(Paint.valueOf("white"));
-            }
-            else{
-                p1.black.setOpacity(1);
-                p1.red.setOpacity(0);
-                p1.P.setTextFill(Paint.valueOf("black"));
-            }
-            if(p2.getTurn()){
-                p2.black.setOpacity(0);
-                p2.red.setOpacity(0.67);
-                p2.P.setTextFill(Paint.valueOf("white"));
-            }
-            else{
-                p2.black.setOpacity(1);
-                p2.red.setOpacity(0);
-                p2.P.setTextFill(Paint.valueOf("black"));
-            }
-            return;
-        }
-        if(p1.getTurn() && p1.getHasStarted()){
-//            System.out.println("entered checkpoint 3");
-            System.out.println(p1.getX());
-            roll(p1,times);
-        }
-        else if(p2.getTurn() && p2.getHasStarted()){
-//            System.out.println("entered checkpoint 4");
-            roll(p2,times);
-        }
-        p1.setTurn();
-        p2.setTurn();
-        if(p1.getTurn()){
-            p1.black.setOpacity(0);
-            p1.red.setOpacity(0.67);
-            p1.P.setTextFill(Paint.valueOf("white"));
-        }
-        else{
-            p1.black.setOpacity(1);
-            p1.red.setOpacity(0);
-            p1.P.setTextFill(Paint.valueOf("black"));
-        }
-        if(p2.getTurn()){
-            p2.black.setOpacity(0);
-            p2.red.setOpacity(0.67);
-            p2.P.setTextFill(Paint.valueOf("white"));
-        }
-        else{
-            p2.black.setOpacity(1);
-            p2.red.setOpacity(0);
-            p2.P.setTextFill(Paint.valueOf("black"));
-        }
         if(p1.current.getId()==100){
             switchtoScene2(e);
         }
         if(p2.current.getId()==100){
             switchtoScene3(e);
         }
+        die.rollDice(p1,p2,times-1);
+
     }
     public void roll(Player p, int r) throws IOException {
         if(p.current.getId()+r>100){
@@ -293,7 +208,7 @@ public class HelloController implements Initializable {
 //                if(p.setX(-42.5)) linear.setByX(-42.5);
 //                else checker = true;
 //            }
-            TranslateTransition current = p.move();
+            SequentialTransition current = p.move();
             if(current==null) {
                 checker = true;
                 break;
@@ -319,6 +234,7 @@ public class HelloController implements Initializable {
         }
     }
     Image dice1,dice2,dice3,dice4,dice5,dice6;
+    Dice die;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         double currx=0,curry=0;
@@ -376,7 +292,7 @@ public class HelloController implements Initializable {
         Snakes_and_Ladders.add(new Ladder(alltiles.get(32),alltiles.get(46)));
         Snakes_and_Ladders.add(new Ladder(alltiles.get(34),alltiles.get(44)));
         Snakes_and_Ladders.add(new Ladder(alltiles.get(36),alltiles.get(42)));
-        Snakes_and_Ladders.add(new Ladder(alltiles.get(39),alltiles.get(80)));
+//        Snakes_and_Ladders.add(new Ladder(alltiles.get(39),alltiles.get(80)));
 //        Snakes_and_Ladders.add(new Snakes(alltiles.get(54),alltiles.get(33),A4,true,false));
 //        Snakes_and_Ladders.add(new Snakes(alltiles.get(56),alltiles.get(35),A5,true,false));
 //        Snakes_and_Ladders.add(new Snakes(alltiles.get(58),alltiles.get(37),A6,true,false));
@@ -385,8 +301,149 @@ public class HelloController implements Initializable {
         Snakes_and_Ladders.add(new Ladder(alltiles.get(63),alltiles.get(82)));
 //        Snakes_and_Ladders.add(new Snakes(alltiles.get(90),alltiles.get(49),A10,false,false));
 //        Snakes_and_Ladders.add(new Snakes(alltiles.get(94),alltiles.get(73),A7,true,false));
-//        //Snakes_and_Ladders.add(new Snakes(alltiles.get(96),alltiles.get(75),A8,true,false));
-        //Snakes_and_Ladders.add(new Snakes(alltiles.get(98),alltiles.get(77),A9,true,false));
+//        Snakes_and_Ladders.add(new Snakes(alltiles.get(96),alltiles.get(75),A8,true,false));
+//        Snakes_and_Ladders.add(new Snakes(alltiles.get(98),alltiles.get(77),A9,true,false));
+
+        File v1 = new File("/Users/sandeepsehgal/IdeaProjects/demo/src/main/resources/com/example/demo/1.png");
+        File v2 = new File("/Users/sandeepsehgal/IdeaProjects/demo/src/main/resources/com/example/demo/2.png");
+        File v3 = new File("/Users/sandeepsehgal/IdeaProjects/demo/src/main/resources/com/example/demo/3.png");
+        File v4 = new File("/Users/sandeepsehgal/IdeaProjects/demo/src/main/resources/com/example/demo/4.png");
+        File v5 = new File("/Users/sandeepsehgal/IdeaProjects/demo/src/main/resources/com/example/demo/5.png");
+        File v6 = new File("/Users/sandeepsehgal/IdeaProjects/demo/src/main/resources/com/example/demo/6.png");
+//        File v1 = new File("D:/coding/javafx/ap/AP_project-main/demo/src/main/resources/com/example/demo/1.png");
+//        File v2 = new File("D:/coding/javafx/ap/AP_project-main/demo/src/main/resources/com/example/demo/2.png");
+//        File v3 = new File("D:/coding/javafx/ap/AP_project-main/demo/src/main/resources/com/example/demo/3.png");
+//        File v4 = new File("D:/coding/javafx/ap/AP_project-main/demo/src/main/resources/com/example/demo/4.png");
+//        File v5 = new File("D:/coding/javafx/ap/AP_project-main/demo/src/main/resources/com/example/demo/5.png");
+//        File v6 = new File("D:/coding/javafx/ap/AP_project-main/demo/src/main/resources/com/example/demo/6.png");
+        die = new Dice(new Image(v1.toURI().toString()),new Image(v2.toURI().toString()),new Image(v3.toURI().toString()),new Image(v4.toURI().toString()),new Image(v5.toURI().toString()),new Image(v6.toURI().toString()));
+    }
+    class Dice{
+        private ArrayList<Image> values = new ArrayList<Image>();
+        Dice(Image img1,Image img2,Image img3,Image img4,Image img5,Image img6){
+            this.values.add(img1);
+            this.values.add(img2);
+            this.values.add(img3);
+            this.values.add(img4);
+            this.values.add(img5);
+            this.values.add(img6);
+        }
+        void rollDice(Player p1, Player p2, int value){
+//            for(int i=0;i<6;i++) {
+//                SequentialTransition seq = new SequentialTransition(Dice);
+//                TranslateTransition stay = new TranslateTransition();
+//                stay.setDuration(Duration.millis(500));
+//                Dice.setImage(values.get(i));
+//                seq.getChildren().add(stay);
+//                seq.play();
+//                System.out.println("DONE rolling: "+i);
+//            }
+            Thread thread = new Thread(){
+                public void run(){
+                    try {
+                        for (int i = 0; i < 6; i++) {
+                            Dice.setImage(values.get(i%6));
+                            Thread.sleep(50);
+                            if(i==5){
+                                Dice.setImage(values.get(value));
+                            }
+                        }
+                        int times = value+1;
+                        Thread.sleep(100);
+                        if(!p1.getHasStarted() && times==1 && p1.getTurn()){
+                            p1.setHasStarted();
+                            roll(p1,times);
+                            p1.setTurn();
+                            p2.setTurn();
+                            if(p1.getTurn()){
+                                p1.black.setOpacity(0);
+                                p1.red.setOpacity(0.67);
+                                p1.P.setTextFill(Paint.valueOf("white"));
+                            }
+                            else{
+                                p1.black.setOpacity(1);
+                                p1.red.setOpacity(0);
+                                p1.P.setTextFill(Paint.valueOf("black"));
+                            }
+                            if(p2.getTurn()){
+                                p2.black.setOpacity(0);
+                                p2.red.setOpacity(0.67);
+                                p2.P.setTextFill(Paint.valueOf("white"));
+                            }
+                            else{
+                                p2.black.setOpacity(1);
+                                p2.red.setOpacity(0);
+                                p2.P.setTextFill(Paint.valueOf("black"));
+                            }
+                            return;
+                        }
+//        System.out.println("reached checkpoint 1");
+                        if(!p2.getHasStarted() && times==1 && p2.getTurn()){
+                            p2.setHasStarted();
+                            roll(p2,times);
+                            p2.setTurn();
+                            p1.setTurn();
+                            if(p1.getTurn()){
+                                p1.black.setOpacity(0);
+                                p1.red.setOpacity(0.67);
+                                p1.P.setTextFill(Paint.valueOf("white"));
+                            }
+                            else{
+                                p1.black.setOpacity(1);
+                                p1.red.setOpacity(0);
+                                p1.P.setTextFill(Paint.valueOf("black"));
+                            }
+                            if(p2.getTurn()){
+                                p2.black.setOpacity(0);
+                                p2.red.setOpacity(0.67);
+                                p2.P.setTextFill(Paint.valueOf("white"));
+                            }
+                            else{
+                                p2.black.setOpacity(1);
+                                p2.red.setOpacity(0);
+                                p2.P.setTextFill(Paint.valueOf("black"));
+                            }
+                            return;
+                        }
+                        if(p1.getTurn() && p1.getHasStarted()){
+//            System.out.println("entered checkpoint 3");
+                            System.out.println(p1.getX());
+                            roll(p1,times);
+                        }
+                        else if(p2.getTurn() && p2.getHasStarted()){
+//            System.out.println("entered checkpoint 4");
+                            roll(p2,times);
+                        }
+                        p1.setTurn();
+                        p2.setTurn();
+                        if(p1.getTurn()){
+                            p1.black.setOpacity(0);
+                            p1.red.setOpacity(0.67);
+                            p1.P.setTextFill(Paint.valueOf("white"));
+                        }
+                        else{
+                            p1.black.setOpacity(1);
+                            p1.red.setOpacity(0);
+                            p1.P.setTextFill(Paint.valueOf("black"));
+                        }
+                        if(p2.getTurn()){
+                            p2.black.setOpacity(0);
+                            p2.red.setOpacity(0.67);
+                            p2.P.setTextFill(Paint.valueOf("white"));
+                        }
+                        else{
+                            p2.black.setOpacity(1);
+                            p2.red.setOpacity(0);
+                            p2.P.setTextFill(Paint.valueOf("black"));
+                        }
+                    } catch (InterruptedException | IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            };
+            thread.start();
+
+        }
     }
     class Tile{
         private double x,y;
@@ -483,7 +540,30 @@ public class HelloController implements Initializable {
         boolean getHasStarted(){
             return this.hasStarted;
         }
-        TranslateTransition move(){
+        SequentialTransition move(){
+            SequentialTransition seq = new SequentialTransition();
+            if(current.next==null) return null;
+//            if(current.getId()%10!=9) {
+//                TranslateTransition first = new TranslateTransition();
+//                first.setDuration(Duration.millis(125));
+//                first.setByX((current.next.getX() - current.getX())/2);
+//                first.setByY((current.next.getY() - current.getY())+15);
+//                    seq.getChildren().add(first);
+//                TranslateTransition second = new TranslateTransition();
+//                second.setDuration(Duration.millis(125));
+//                second.setByX((current.next.getX() - current.getX())/2);
+//                second.setByY((current.next.getY() - current.getY())-15);
+//
+//                seq.getChildren().add(second);
+//                current = current.next;
+//                return seq;
+//            }
+//            TranslateTransition second = new TranslateTransition();
+//            second.setDuration(Duration.millis(125));
+//            second.setByX((current.next.getX() - current.getX()));
+//            second.setByY((current.next.getY() - current.getY()));
+//            seq.getChildren().add(second);
+//            current = current.next;
             TranslateTransition movement = new TranslateTransition();
             if(current.next==null) return null;
             movement.setDuration(Duration.millis(250));
@@ -492,7 +572,9 @@ public class HelloController implements Initializable {
             movement.setByY(current.next.getY()-current.getY());
             current = current.next;
             System.out.println("next location "+current.getX()+" "+current.getY());
-            return movement;
+            seq.getChildren().add(movement);
+            return seq;
+//            System.out.println("next location "+current.getX()+" "+current.getY());
         }
         public ImageView getImage() {
             return this.img;
@@ -573,7 +655,6 @@ public class HelloController implements Initializable {
             p.setTile(tail);
             return completemovement;
         }
-
         private SequentialTransition zigzagAnimationOfSize3(Player p) {
             SequentialTransition completemovement = new SequentialTransition(p.getImage());
             System.out.println("Reached zigzag of size 3 " + body.size());
