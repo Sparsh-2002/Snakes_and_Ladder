@@ -47,7 +47,6 @@ public class HelloController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
-
     @FXML
     private Rectangle red1;
     @FXML
@@ -227,11 +226,6 @@ public class HelloController implements Initializable {
         if(checker==false)
             movement.play();
         System.out.println(r);
-        p.setprevMove(r);
-        if(p.current.getId()==100){
-            ActionEvent event = new ActionEvent();
-            switchtoScene2(event);
-        }
     }
     Image dice1,dice2,dice3,dice4,dice5,dice6;
     Dice die;
@@ -263,46 +257,26 @@ public class HelloController implements Initializable {
         t.setNextTile(alltiles.get(0));
         p1 = new Player(goti1, true,t,red1, black1, Player1);
         p2 = new Player(goti2, false,t,red2, black2, Player2);
-        ArrayList<Tile> A1 = new ArrayList<Tile>();
-        A1.add(alltiles.get(27));A1.add(alltiles.get(26));A1.add(alltiles.get(13));A1.add(alltiles.get(12));A1.add(alltiles.get(13));
-        ArrayList<Tile> A2 = new ArrayList<Tile>();
-        A2.add(alltiles.get(25));A2.add(alltiles.get(24));A2.add(alltiles.get(15));A2.add(alltiles.get(14));A2.add(alltiles.get(15));
-        ArrayList<Tile> A3 = new ArrayList<Tile>();
-        A3.add(alltiles.get(23));A3.add(alltiles.get(22));A3.add(alltiles.get(17));A3.add(alltiles.get(16));A3.add(alltiles.get(17));
-        ArrayList<Tile> A4 = new ArrayList<Tile>();
-        A4.add(alltiles.get(54));A4.add(alltiles.get(53));A4.add(alltiles.get(46));A4.add(alltiles.get(45));A4.add(alltiles.get(34));A4.add(alltiles.get(33));
-        ArrayList<Tile> A5= new ArrayList<Tile>();
-        A5.add(alltiles.get(56));A5.add(alltiles.get(55));A5.add(alltiles.get(44));A5.add(alltiles.get(43));A5.add(alltiles.get(36));A5.add(alltiles.get(35));
-        ArrayList<Tile> A6 = new ArrayList<Tile>();
-        A6.add(alltiles.get(58));A6.add(alltiles.get(57));A6.add(alltiles.get(42));A6.add(alltiles.get(41));A6.add(alltiles.get(38));A6.add(alltiles.get(37));
-        ArrayList<Tile> A7 = new ArrayList<Tile>();
-        A7.add(alltiles.get(94));A7.add(alltiles.get(93));A7.add(alltiles.get(86));A7.add(alltiles.get(85));A7.add(alltiles.get(74));A7.add(alltiles.get(73));
-        ArrayList<Tile> A8= new ArrayList<Tile>();
-        A8.add(alltiles.get(96));A8.add(alltiles.get(95));A8.add(alltiles.get(84));A8.add(alltiles.get(83));A8.add(alltiles.get(76));A8.add(alltiles.get(75));
-        ArrayList<Tile> A9 = new ArrayList<Tile>();
-        A9.add(alltiles.get(98));A9.add(alltiles.get(97));A9.add(alltiles.get(82));A9.add(alltiles.get(81));A9.add(alltiles.get(78));A9.add(alltiles.get(77));
-        ArrayList<Tile> A10 = new ArrayList<Tile>();
-        A10.add(alltiles.get(90));A10.add(alltiles.get(89));A10.add(alltiles.get(70));A10.add(alltiles.get(69));A10.add(alltiles.get(50));A10.add(alltiles.get(49));
         Snakes_and_Ladders.add(new Ladder(alltiles.get(4),alltiles.get(16)));
         Snakes_and_Ladders.add(new Ladder(alltiles.get(6),alltiles.get(14)));
         Snakes_and_Ladders.add(new Ladder(alltiles.get(8),alltiles.get(12)));
-//        Snakes_and_Ladders.add(new Snakes(alltiles.get(27),alltiles.get(13),A1,true,true));
-//        Snakes_and_Ladders.add(new Snakes(alltiles.get(25),alltiles.get(15),A2,true,true));
-//        Snakes_and_Ladders.add(new Snakes(alltiles.get(23),alltiles.get(17),A3,true,true));
+//        Snakes_and_Ladders.add(new Snakes(alltiles.get(27),alltiles.get(13),true,true));
+//        Snakes_and_Ladders.add(new Snakes(alltiles.get(25),alltiles.get(15),true,true));
+//        Snakes_and_Ladders.add(new Snakes(alltiles.get(23),alltiles.get(17),true,true));
         Snakes_and_Ladders.add(new Ladder(alltiles.get(32),alltiles.get(46)));
         Snakes_and_Ladders.add(new Ladder(alltiles.get(34),alltiles.get(44)));
         Snakes_and_Ladders.add(new Ladder(alltiles.get(36),alltiles.get(42)));
-//        Snakes_and_Ladders.add(new Ladder(alltiles.get(39),alltiles.get(80)));
-//        Snakes_and_Ladders.add(new Snakes(alltiles.get(54),alltiles.get(33),A4,true,false));
-//        Snakes_and_Ladders.add(new Snakes(alltiles.get(56),alltiles.get(35),A5,true,false));
-//        Snakes_and_Ladders.add(new Snakes(alltiles.get(58),alltiles.get(37),A6,true,false));
+        Snakes_and_Ladders.add(new Ladder(alltiles.get(39),alltiles.get(80)));
+//        Snakes_and_Ladders.add(new Snakes(alltiles.get(54),alltiles.get(33),true,false));
+//        Snakes_and_Ladders.add(new Snakes(alltiles.get(56),alltiles.get(35),true,false));
+//        Snakes_and_Ladders.add(new Snakes(alltiles.get(58),alltiles.get(37),true,false));
         Snakes_and_Ladders.add(new Ladder(alltiles.get(67),alltiles.get(86)));
         Snakes_and_Ladders.add(new Ladder(alltiles.get(65),alltiles.get(84)));
         Snakes_and_Ladders.add(new Ladder(alltiles.get(63),alltiles.get(82)));
-//        Snakes_and_Ladders.add(new Snakes(alltiles.get(90),alltiles.get(49),A10,false,false));
-//        Snakes_and_Ladders.add(new Snakes(alltiles.get(94),alltiles.get(73),A7,true,false));
-//        Snakes_and_Ladders.add(new Snakes(alltiles.get(96),alltiles.get(75),A8,true,false));
-//        Snakes_and_Ladders.add(new Snakes(alltiles.get(98),alltiles.get(77),A9,true,false));
+//        Snakes_and_Ladders.add(new Snakes(alltiles.get(90),alltiles.get(49),false,false));
+//        Snakes_and_Ladders.add(new Snakes(alltiles.get(94),alltiles.get(73),true,false));
+//        Snakes_and_Ladders.add(new Snakes(alltiles.get(96),alltiles.get(75),true,false));
+//        Snakes_and_Ladders.add(new Snakes(alltiles.get(98),alltiles.get(77),true,false));
 
         File v1 = new File("/Users/sandeepsehgal/IdeaProjects/demo/src/main/resources/com/example/demo/1.png");
         File v2 = new File("/Users/sandeepsehgal/IdeaProjects/demo/src/main/resources/com/example/demo/2.png");
@@ -446,9 +420,9 @@ public class HelloController implements Initializable {
         }
     }
     class Tile{
-        private double x,y;
+        private final double x,y;
         private Tile next;
-        private int id;
+        private final int id;
         Tile(double x,double y, int i){
             this.x=x;this.y=y;
             this.id = i;
@@ -470,16 +444,11 @@ public class HelloController implements Initializable {
         }
     }
     class Player{
-        Tile current;
-        ImageView img;
-        Rectangle red;
-        Rectangle black;
-        Label P;
-        private boolean start = true;
-        private boolean rightup = false;
-        private boolean leftup = false;
-        private boolean goright = true;
-        private int prevMove;
+        private Tile current;
+        private ImageView img;
+        private Rectangle red;
+        private Rectangle black;
+        private Label P;
         private boolean turn;
         private boolean hasStarted = false;
         public Player(ImageView img1, boolean f,Tile current, Rectangle red, Rectangle black, Label P){
@@ -489,44 +458,12 @@ public class HelloController implements Initializable {
             this.red = red;
             this.black = black;
             this.P = P;
-//            System.out.println("Player completed with turn: "+ f);
-//            System.out.println(this.img==null);
         }
         double getX(){
             return this.current.getX();
         }
         double getY(){
             return this.current.getY();
-        }
-        void setStart(boolean f){
-            this.start = f;
-        }
-        void setRightup(boolean f){
-            this.rightup = f;
-        }
-        void setLeftup(boolean f){
-            this.leftup = f;
-        }
-        void setgoRight(boolean f){
-            this.goright = f;
-        }
-        void setprevMove(int x){
-            this.prevMove = x;
-        }
-        int getPrevMove(){
-            return this.prevMove;
-        }
-        boolean getStart(){
-            return this.start;
-        }
-        boolean getRightup(){
-            return this.rightup;
-        }
-        boolean getLeftup(){
-            return this.leftup;
-        }
-        boolean getgoRight(){
-            return this.goright;
         }
         void setTurn(){
             this.turn =! turn;
@@ -591,15 +528,13 @@ public class HelloController implements Initializable {
         SequentialTransition animate(Player p);
     }
     class Snakes implements SNL{
-        Tile head;
-        Tile tail;
-        ArrayList<Tile> body;
-        boolean zigzag;
-        boolean sizethree;
-        public Snakes(Tile H, Tile T,ArrayList<Tile> body, boolean zigzag,boolean sizethree){
+        private final Tile head;
+        private final Tile tail;
+        private final boolean zigzag;
+        private final boolean sizethree;
+        public Snakes(Tile H, Tile T, boolean zigzag,boolean sizethree){
             this.head = H;
             this.tail = T;
-            this.body = body;
             this.zigzag = zigzag;
             this.sizethree=sizethree;
 //            for(Tile temp: body) System.out.println(temp.getX()+" "+temp.getY());
@@ -621,7 +556,6 @@ public class HelloController implements Initializable {
         }
         private SequentialTransition linearAnimation(Player p) {
             SequentialTransition completemovement = new SequentialTransition(p.getImage());
-            System.out.println("Reached zigzag of size 3 " + body.size());
             TranslateTransition movement = new TranslateTransition();
             movement.setDuration(Duration.millis(200));
             movement.setByX(15);
@@ -657,7 +591,6 @@ public class HelloController implements Initializable {
         }
         private SequentialTransition zigzagAnimationOfSize3(Player p) {
             SequentialTransition completemovement = new SequentialTransition(p.getImage());
-            System.out.println("Reached zigzag of size 3 " + body.size());
             TranslateTransition movement = new TranslateTransition();
             movement.setDuration(Duration.millis(200));
             movement.setByX(-42);
@@ -683,7 +616,6 @@ public class HelloController implements Initializable {
         }
         private SequentialTransition zigzagAnimationOfSize6(Player p) {
             SequentialTransition completemovement = new SequentialTransition(p.getImage());
-            System.out.println("Reached zigzag of size 3 " + body.size());
             double x= head.getX();
             double y = head.getY();
             TranslateTransition movement = new TranslateTransition();
@@ -710,8 +642,8 @@ public class HelloController implements Initializable {
         }
     }
     class Ladder implements SNL{
-        Tile head;
-        Tile tail;
+        private final Tile head;
+        private final Tile tail;
         public Ladder(Tile H, Tile T){
             this.head = H;
             this.tail = T;
@@ -736,4 +668,5 @@ public class HelloController implements Initializable {
             return completemovemnt;
         }
     }
+    
 }
