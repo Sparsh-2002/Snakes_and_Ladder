@@ -39,7 +39,7 @@
             <Image url="@arrow-pointed-down-animated.gif" />
          </image>
       </ImageView>
-      <Button layoutX="194.0" layoutY="662.0" mnemonicParsing="false" onAction="#move" opacity="0.0" prefHeight="26.0" prefWidth="29.0" />
+      <Button fx:id="rollButton" layoutX="193.0" layoutY="662.0" mnemonicParsing="false" onAction="#move" opacity="0.0" prefHeight="26.0" prefWidth="29.0" />
       <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="player2" fitHeight="48.0" fitWidth="93.0" layoutX="233.0" layoutY="658.0" pickOnBounds="true" preserveRatio="true">
          <image>

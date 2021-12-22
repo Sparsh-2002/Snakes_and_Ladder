@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -32,6 +33,8 @@ public class HelloController implements Initializable {
     private ImageView player1;
     @FXML
     private ImageView player2;
+    @FXML
+    private Button rollButton;
     private Dice die;
     private Player p1,p2;
     private static final ArrayList<SNL> Snakes_and_Ladders = new ArrayList<SNL>();
@@ -72,6 +75,9 @@ public class HelloController implements Initializable {
         stage.show();
     }
     public void move(ActionEvent e) throws IOException {
+        if(rollButton.isDisabled()){
+            return;
+        }
         int times = (int)(Math.random()*6+1);
         if(p1.getTurn()){
             p2.off();
@@ -80,15 +86,14 @@ public class HelloController implements Initializable {
             p1.off();
         }
         die.rollDice(p1,p2,times-1, arrow);
-        System.out.println(p1.getTile().getId());
-        System.out.println(p2.getTile().getId());
+//        System.out.println(p1.getTile().getId());
+//        System.out.println(p2.getTile().getId());
         if(p1.getTile().getId()==100){
             switchtoScene2(e);
         }
         if(p2.getTile().getId()==100){
             switchtoScene3(e);
         }
-
     }
     public static void roll(Player p, int r, ImageView temp) throws IOException {
         if(p.getTile().getId()+r>100){
@@ -176,13 +181,14 @@ public class HelloController implements Initializable {
         File v4 = new File("D:/coding/javafx/ap/AP_project-main/demo/src/main/resources/com/example/demo/4.png");
         File v5 = new File("D:/coding/javafx/ap/AP_project-main/demo/src/main/resources/com/example/demo/5.png");
         File v6 = new File("D:/coding/javafx/ap/AP_project-main/demo/src/main/resources/com/example/demo/6.png");
-        die = new Dice(new Image(v1.toURI().toString()),new Image(v2.toURI().toString()),new Image(v3.toURI().toString()),new Image(v4.toURI().toString()),new Image(v5.toURI().toString()),new Image(v6.toURI().toString()),Dice);
+        die = new Dice(new Image(v1.toURI().toString()),new Image(v2.toURI().toString()),new Image(v3.toURI().toString()),new Image(v4.toURI().toString()),new Image(v5.toURI().toString()),new Image(v6.toURI().toString()),Dice,rollButton);
     }
 }
 class Dice{
     private final ArrayList<Image> values = new ArrayList<Image>();
     private final ImageView Dice;
-    Dice(Image img1,Image img2,Image img3,Image img4,Image img5,Image img6, ImageView d){
+    private Button control;
+    Dice(Image img1,Image img2,Image img3,Image img4,Image img5,Image img6, ImageView d,Button control){
         this.values.add(img1);
         this.values.add(img2);
         this.values.add(img3);
@@ -190,11 +196,13 @@ class Dice{
         this.values.add(img5);
         this.values.add(img6);
         this.Dice = d;
+        this.control = control;
     }
     void rollDice(Player p1, Player p2, int value, ImageView arrow){
         Thread thread = new Thread(){
             public void run(){
                 try {
+                    control.setDisable(true);
                     arrow.setOpacity(0);
                     for (int i = 0; i < 12; i++) {
                         Dice.setImage(values.get(i%6));
@@ -223,7 +231,7 @@ class Dice{
                             p2.off();
                         }
                         arrow.setOpacity(1);
-
+                        control.setDisable(false);
                         return;
                     }
                     if(!p2.getHasStarted() && times==1 && p2.getTurn()){
@@ -244,7 +252,7 @@ class Dice{
                             p2.off();
                         }
                         arrow.setOpacity(1);
-
+                        control.setDisable(false);
                         return;
                     }
                     if(p1.getTurn() && p1.getHasStarted()){
@@ -268,13 +276,13 @@ class Dice{
                         p2.off();
                     }
                     arrow.setOpacity(1);
+                    control.setDisable(false);
                 } catch (InterruptedException | IOException e) {
                     e.printStackTrace();
                 }
             }
         };
         thread.start();
-
     }
 }
 class Tile{
@@ -428,22 +436,22 @@ class Snakes implements SNL{
         SequentialTransition completemovement = new SequentialTransition(p.getImage());
         TranslateTransition movement = new TranslateTransition();
         movement.setDuration(Duration.millis(200));
-        movement.setByX(-42);
+        movement.setByX(-42.5);
         movement.setByY(30);
         completemovement.getChildren().add(movement);
         movement = new TranslateTransition();
         movement.setDuration(Duration.millis(200));
-        movement.setByX(+42);
+        movement.setByX(+42.5);
         movement.setByY(30);
         completemovement.getChildren().add(movement);
         movement = new TranslateTransition();
         movement.setDuration(Duration.millis(200));
-        movement.setByX(-21);
+        movement.setByX(-21.25);
         movement.setByY(10);
         completemovement.getChildren().add(movement);
         movement = new TranslateTransition();
         movement.setDuration(Duration.millis(200));
-        movement.setByX(-21);
+        movement.setByX(-21.25);
         movement.setByY(-10);
         completemovement.getChildren().add(movement);
         p.setTile(tail);
@@ -455,17 +463,17 @@ class Snakes implements SNL{
         double y = head.getY();
         TranslateTransition movement = new TranslateTransition();
         movement.setDuration(Duration.millis(200));
-        movement.setByX(42);
+        movement.setByX(42.5);
         movement.setByY(30);
         completemovement.getChildren().add(movement);
         movement = new TranslateTransition();
         movement.setDuration(Duration.millis(200));
-        movement.setByX(-42);
+        movement.setByX(-42.5);
         movement.setByY(60);
         completemovement.getChildren().add(movement);
         movement = new TranslateTransition();
         movement.setDuration(Duration.millis(200));
-        movement.setByX(42);
+        movement.setByX(42.5);
         movement.setByY(10);
         completemovement.getChildren().add(movement);
         movement = new TranslateTransition();
