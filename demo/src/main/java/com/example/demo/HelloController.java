@@ -9,17 +9,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Paint;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import org.controlsfx.control.action.Action;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -30,24 +23,21 @@ public class HelloController implements Initializable {
     @FXML
     private ImageView Dice;
     @FXML
-    private ImageView img;
-    @FXML
     private ImageView goti1;
     @FXML
     private ImageView goti2;
     @FXML
     private ImageView arrow;
     @FXML
-    private Label localval;
-    @FXML
     private ImageView player1;
     @FXML
     private ImageView player2;
-
-    private Button rollButton;
+    private Dice die;
+    private Player p1,p2;
+    private static final ArrayList<SNL> Snakes_and_Ladders = new ArrayList<SNL>();
+    private final ArrayList<Tile> alltiles = new ArrayList<Tile>();
     private Stage stage;
     private Scene scene;
-    private Parent root;
 
     public void switchtoScene1(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
@@ -81,9 +71,6 @@ public class HelloController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    private Player p1,p2;
-    private ArrayList<Tile> alltiles = new ArrayList<Tile>();
-    private static ArrayList<SNL> Snakes_and_Ladders = new ArrayList<SNL>();
     public void move(ActionEvent e) throws IOException {
         int times = (int)(Math.random()*6+1);
         if(p1.getTurn()){
@@ -123,13 +110,10 @@ public class HelloController implements Initializable {
                 break;
             }
         }
-        if(checker==false) {
+        if(!checker) {
             movement.play();
         }
-//        System.out.println(r);
-        return;
     }
-    private Dice die;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         double currx=0,curry=0;
@@ -151,7 +135,6 @@ public class HelloController implements Initializable {
             Tile current = alltiles.get(i);
             current.setNextTile(alltiles.get(i+1));
         }
-        //for(int i=0;i<100;i++)System.out.println(alltiles.get(i).getId()+" "+alltiles.get(i).getX()+" "+alltiles.get(i).getY()+" "+alltiles.get(i).getNextTile().getX()+" "+alltiles.get(i).getNextTile().getY());
         File player1on = new File("D:/coding/javafx/ap/AP_project-main/demo/src/main/resources/com/example/demo/player1on.jpeg");
         File player1off = new File("D:/coding/javafx/ap/AP_project-main/demo/src/main/resources/com/example/demo/player1off.jpeg");
         File player2on = new File("D:/coding/javafx/ap/AP_project-main/demo/src/main/resources/com/example/demo/player2on.jpeg");
@@ -163,23 +146,23 @@ public class HelloController implements Initializable {
         Snakes_and_Ladders.add(new Ladder(alltiles.get(4),alltiles.get(16)));
         Snakes_and_Ladders.add(new Ladder(alltiles.get(6),alltiles.get(14)));
         Snakes_and_Ladders.add(new Ladder(alltiles.get(8),alltiles.get(12)));
-//        Snakes_and_Ladders.add(new Snakes(alltiles.get(27),alltiles.get(13),true,true));
-//        Snakes_and_Ladders.add(new Snakes(alltiles.get(25),alltiles.get(15),true,true));
-//        Snakes_and_Ladders.add(new Snakes(alltiles.get(23),alltiles.get(17),true,true));
+        Snakes_and_Ladders.add(new Snakes(alltiles.get(27),alltiles.get(13),true,true));
+        Snakes_and_Ladders.add(new Snakes(alltiles.get(25),alltiles.get(15),true,true));
+        Snakes_and_Ladders.add(new Snakes(alltiles.get(23),alltiles.get(17),true,true));
         Snakes_and_Ladders.add(new Ladder(alltiles.get(32),alltiles.get(46)));
         Snakes_and_Ladders.add(new Ladder(alltiles.get(34),alltiles.get(44)));
         Snakes_and_Ladders.add(new Ladder(alltiles.get(36),alltiles.get(42)));
         Snakes_and_Ladders.add(new Ladder(alltiles.get(39),alltiles.get(80)));
-//        Snakes_and_Ladders.add(new Snakes(alltiles.get(54),alltiles.get(33),true,false));
-//        Snakes_and_Ladders.add(new Snakes(alltiles.get(56),alltiles.get(35),true,false));
-//        Snakes_and_Ladders.add(new Snakes(alltiles.get(58),alltiles.get(37),true,false));
+        Snakes_and_Ladders.add(new Snakes(alltiles.get(54),alltiles.get(33),true,false));
+        Snakes_and_Ladders.add(new Snakes(alltiles.get(56),alltiles.get(35),true,false));
+        Snakes_and_Ladders.add(new Snakes(alltiles.get(58),alltiles.get(37),true,false));
         Snakes_and_Ladders.add(new Ladder(alltiles.get(67),alltiles.get(86)));
         Snakes_and_Ladders.add(new Ladder(alltiles.get(65),alltiles.get(84)));
         Snakes_and_Ladders.add(new Ladder(alltiles.get(63),alltiles.get(82)));
-//        Snakes_and_Ladders.add(new Snakes(alltiles.get(90),alltiles.get(49),false,false));
-//        Snakes_and_Ladders.add(new Snakes(alltiles.get(94),alltiles.get(73),true,false));
-//        Snakes_and_Ladders.add(new Snakes(alltiles.get(96),alltiles.get(75),true,false));
-//        Snakes_and_Ladders.add(new Snakes(alltiles.get(98),alltiles.get(77),true,false));
+        Snakes_and_Ladders.add(new Snakes(alltiles.get(90),alltiles.get(49),false,false));
+        Snakes_and_Ladders.add(new Snakes(alltiles.get(94),alltiles.get(73),true,false));
+        Snakes_and_Ladders.add(new Snakes(alltiles.get(96),alltiles.get(75),true,false));
+        Snakes_and_Ladders.add(new Snakes(alltiles.get(98),alltiles.get(77),true,false));
 
 //        File v1 = new File("/Users/sandeepsehgal/IdeaProjects/demo/src/main/resources/com/example/demo/1.png");
 //        File v2 = new File("/Users/sandeepsehgal/IdeaProjects/demo/src/main/resources/com/example/demo/2.png");
@@ -197,8 +180,8 @@ public class HelloController implements Initializable {
     }
 }
 class Dice{
-    private ArrayList<Image> values = new ArrayList<Image>();
-    private ImageView Dice;
+    private final ArrayList<Image> values = new ArrayList<Image>();
+    private final ImageView Dice;
     Dice(Image img1,Image img2,Image img3,Image img4,Image img5,Image img6, ImageView d){
         this.values.add(img1);
         this.values.add(img2);
@@ -320,11 +303,11 @@ class Tile{
 }
 class Player{
     private Tile current;
-    private ImageView img;
-    private Image on;
-    private Image off;
-    private ImageView status;
-    private int ID;
+    private final ImageView img;
+    private final Image on;
+    private final Image off;
+    private final ImageView status;
+    private final int ID;
     private boolean turn;
     private boolean hasStarted = false;
     public Player(ImageView img1, Image on, Image off, ImageView status,boolean f,Tile current,int ID){
@@ -335,15 +318,6 @@ class Player{
         this.turn = f;
         this.current = current;
         this.ID = ID;
-    }
-    public int getID(){
-        return this.ID;
-    }
-    double getX(){
-        return this.current.getX();
-    }
-    double getY(){
-        return this.current.getY();
     }
     void setTurn(){
         this.turn =! turn;
@@ -360,38 +334,14 @@ class Player{
     SequentialTransition move(){
         SequentialTransition seq = new SequentialTransition();
         if(current.getNextTile()==null) return null;
-//            if(current.getId()%10!=9) {
-//                TranslateTransition first = new TranslateTransition();
-//                first.setDuration(Duration.millis(125));
-//                first.setByX((current.next.getX() - current.getX())/2);
-//                first.setByY((current.next.getY() - current.getY())+15);
-//                    seq.getChildren().add(first);
-//                TranslateTransition second = new TranslateTransition();
-//                second.setDuration(Duration.millis(125));
-//                second.setByX((current.next.getX() - current.getX())/2);
-//                second.setByY((current.next.getY() - current.getY())-15);
-//
-//                seq.getChildren().add(second);
-//                current = current.next;
-//                return seq;
-//            }
-//            TranslateTransition second = new TranslateTransition();
-//            second.setDuration(Duration.millis(125));
-//            second.setByX((current.next.getX() - current.getX()));
-//            second.setByY((current.next.getY() - current.getY()));
-//            seq.getChildren().add(second);
-//            current = current.next;
         TranslateTransition movement = new TranslateTransition();
         if(current.getNextTile()==null) return null;
         movement.setDuration(Duration.millis(250));
-        System.out.println("current location "+current.getX()+" "+current.getY());
         movement.setByX(current.getNextTile().getX()-current.getX());
         movement.setByY(current.getNextTile().getY()-current.getY());
         current = current.getNextTile();
-        System.out.println("next location "+current.getX()+" "+current.getY());
         seq.getChildren().add(movement);
         return seq;
-//            System.out.println("next location "+current.getX()+" "+current.getY());
     }
     public ImageView getImage() {
         return this.img;
